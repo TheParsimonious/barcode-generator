@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quick Barcode Maker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="panel hero reveal">
+        <p class="eyebrow">Phone-first barcode helper</p>
+        <h1>Build a barcode, screenshot it, send it.</h1>
+        <p class="lead">
+          This version keeps the workflow simple: type a code, make the barcode,
+          screenshot the card, and share it to the computer.
+        </p>
+      </section>
+
+      <section class="panel composer reveal">
+        <label for="barcodeValue">Barcode Text</label>
+        <input
+          id="barcodeValue"
+          type="text"
+          placeholder="Enter item code"
+          maxlength="40"
+          autocomplete="off"
+          autocapitalize="characters"
+          spellcheck="false"
+        />
+        <p class="helper">Use letters, numbers, and common symbols.</p>
+
+        <label for="presetSelect">Preset</label>
+        <select id="presetSelect"></select>
+
+        <button id="createButton" type="button">Create Barcode</button>
+        <p id="feedback" class="feedback" role="status" aria-live="polite">
+          Standard Scan is selected by default for the safest result.
+        </p>
+      </section>
+
+      <section class="preview-stack">
+        <article class="panel barcode-card reveal">
+          <div class="card-top">
+            <span class="pill">Screenshot-ready</span>
+            <span id="sessionCount" class="session-count">0 this session</span>
+          </div>
+
+          <div id="barcodeDisplay" class="barcode-display is-empty">
+            <p id="emptyState" class="empty-state">
+              Create a barcode to fill this card.
+            </p>
+            <svg id="barcodeSvg" aria-label="Barcode preview"></svg>
+          </div>
+
+          <p id="presetCaption" class="preset-caption">Standard Scan</p>
+          <p id="barcodeCaption" class="barcode-caption">Your barcode value will appear here.</p>
+          <p class="capture-note">Take a screenshot, then send it to the computer manually.</p>
+        </article>
+
+        <article class="panel history reveal">
+          <div class="history-head">
+            <div>
+              <p class="eyebrow">Temporary history</p>
+              <h2>Recent barcodes</h2>
+            </div>
+            <span class="history-note">Resets when the page reloads.</span>
+          </div>
+          <div id="historyList" class="history-list">
+            <p class="history-empty">No barcodes created yet.</p>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
